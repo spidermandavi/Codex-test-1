@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lichess Study JSON Converter</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="study-converter.css" />
+  </head>
+  <body>
+    <header class="top-nav" aria-label="Primary navigation">
+      <a class="top-nav__brand" href="index.html">Chess Trainer</a>
+      <nav class="top-nav__links" aria-label="Tools menu">
+        <a href="index.html">Home</a>
+        <a aria-current="page" href="study-converter.html">Study JSON Converter</a>
+      </nav>
+    </header>
+
+    <main class="converter-shell" aria-labelledby="converter-title">
+      <section class="converter-hero">
+        <p class="eyebrow">Lichess study importer</p>
+        <h1 id="converter-title">Convert study links into copyable repertoire JSON.</h1>
+        <p class="intro">
+          Paste a Lichess study URL, fetch its PGN, and export a normalized JSON file that
+          preserves mainlines, variations, NAGs, comments, chapter metadata, and stable move
+          paths for later merging with matching or different lines.
+        </p>
+      </section>
+
+      <section class="converter-grid" aria-label="Study converter workspace">
+        <form class="converter-card input-card" id="converter-form">
+          <label for="study-url">Lichess study link</label>
+          <div class="inline-control">
+            <input
+              id="study-url"
+              type="url"
+              placeholder="https://lichess.org/study/abc123/def456"
+              autocomplete="url"
+            />
+            <button type="button" id="fetch-study">Fetch PGN</button>
+          </div>
+          <p class="field-help">
+            If fetching is blocked by your browser, copy the study PGN from Lichess and paste it below.
+          </p>
+
+          <label for="study-pgn">Study PGN</label>
+          <textarea
+            id="study-pgn"
+            spellcheck="false"
+            placeholder='[Event "Chapter name"]&#10;[Site "https://lichess.org/study/..."]&#10;&#10;1. e4 {comment} (1. d4 d5) 1... e5 *'
+          ></textarea>
+
+          <div class="option-row">
+            <label for="repertoire-name">Repertoire name</label>
+            <input id="repertoire-name" type="text" value="Imported Lichess Study" />
+          </div>
+
+          <div class="button-row">
+            <button type="submit">Convert to JSON</button>
+            <button type="button" class="ghost-button" id="load-example">Load example</button>
+          </div>
+          <p class="status-message" id="converter-status" role="status"></p>
+        </form>
+
+        <section class="converter-card output-card" aria-labelledby="output-title">
+          <div class="output-heading">
+            <div>
+              <p class="eyebrow">Output</p>
+              <h2 id="output-title">Copy this JSON into a GitHub file</h2>
+            </div>
+            <div class="button-row compact">
+              <button type="button" id="copy-json">Copy JSON</button>
+              <button type="button" class="ghost-button" id="download-json">Download</button>
+            </div>
+          </div>
+          <pre class="json-preview"><code id="json-output">Convert a study to see JSON here.</code></pre>
+        </section>
+      </section>
+
+      <section class="converter-card schema-card" aria-labelledby="schema-title">
+        <h2 id="schema-title">Compatibility format</h2>
+        <ul>
+          <li><strong>schemaVersion</strong> lets future importers recognize this file shape.</li>
+          <li><strong>chapters[].moveTree</strong> stores mainline moves as children and variations as sibling branches.</li>
+          <li><strong>path</strong> is a stable SAN sequence, so future files can merge identical lines by path.</li>
+          <li><strong>comments</strong> and <strong>nags</strong> stay attached to the exact move node they came from.</li>
+        </ul>
+      </section>
+    </main>
+
+    <script type="module" src="study-converter.js"></script>
+  </body>
+</html>
