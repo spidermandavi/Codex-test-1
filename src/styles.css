@@ -1,0 +1,292 @@
+:root {
+  color-scheme: dark;
+  --bg: #10151d;
+  --panel: #171f2b;
+  --panel-strong: #202b3a;
+  --text: #f3f7fb;
+  --muted: #aebbd0;
+  --accent: #8fb7ff;
+  --accent-strong: #5d93f5;
+  --light-square: #dee3e6;
+  --dark-square: #8ca2ad;
+  --shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background:
+    radial-gradient(circle at 10% 20%, rgba(93, 147, 245, 0.22), transparent 28rem),
+    linear-gradient(135deg, #0c1118 0%, var(--bg) 55%, #182131 100%);
+  color: var(--text);
+}
+
+button {
+  border: 0;
+  border-radius: 999px;
+  padding: 0.85rem 1.15rem;
+  background: var(--accent-strong);
+  color: white;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 800;
+  box-shadow: 0 12px 28px rgba(93, 147, 245, 0.28);
+}
+
+button:hover,
+button:focus-visible {
+  background: #75a6ff;
+  outline: 3px solid rgba(143, 183, 255, 0.35);
+}
+
+.app-shell {
+  display: grid;
+  grid-template-columns: minmax(20rem, 43rem) minmax(18rem, 28rem);
+  gap: clamp(1rem, 4vw, 3rem);
+  align-items: center;
+  width: min(1180px, calc(100% - 2rem));
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: clamp(1rem, 4vw, 3rem) 0;
+}
+
+.board-panel {
+  order: 1;
+}
+
+.info-panel {
+  order: 2;
+  display: grid;
+  gap: 1.2rem;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 2rem;
+  background: rgba(23, 31, 43, 0.86);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(14px);
+}
+
+.panel-heading {
+  max-width: 42rem;
+  margin-bottom: 1.25rem;
+}
+
+.eyebrow,
+.status-label {
+  margin: 0 0 0.35rem;
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 0.55rem;
+  font-size: clamp(2.4rem, 7vw, 5.5rem);
+  line-height: 0.9;
+}
+
+h2 {
+  margin-bottom: 0.6rem;
+  font-size: 1.05rem;
+}
+
+.lede,
+.info-panel p,
+.feature-list {
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.board-card {
+  width: min(100%, 43rem);
+  padding: clamp(0.65rem, 2vw, 1rem);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 2rem;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.04));
+  box-shadow: var(--shadow);
+}
+
+#board {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 1.35rem;
+  overflow: hidden;
+  touch-action: none;
+}
+
+.status-card {
+  padding: 1rem;
+  border-radius: 1.25rem;
+  background: var(--panel-strong);
+}
+
+.status-card strong {
+  display: block;
+  font-size: clamp(1.25rem, 3vw, 1.65rem);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.feature-list {
+  padding-left: 1.2rem;
+}
+
+/* Chessground base layout, board colors, highlights, and piece images. */
+.cg-wrap {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  contain: layout style;
+  user-select: none;
+}
+
+.cg-wrap coords {
+  position: absolute;
+  display: flex;
+  pointer-events: none;
+  opacity: 0.8;
+  color: rgba(16, 21, 29, 0.72);
+  font-size: clamp(0.65rem, 1.6vw, 0.9rem);
+  font-weight: 900;
+  text-shadow: 0 1px rgba(255, 255, 255, 0.2);
+}
+
+.cg-wrap coords.ranks {
+  top: 0.25rem;
+  bottom: 0.25rem;
+  left: 0.35rem;
+  flex-flow: column-reverse;
+}
+
+.cg-wrap coords.files {
+  right: 0.45rem;
+  bottom: 0.25rem;
+  left: 0.45rem;
+  flex-flow: row;
+  text-align: right;
+}
+
+.cg-wrap coords.files coord {
+  flex: 1 1 12.5%;
+}
+
+.cg-wrap coords.ranks coord {
+  flex: 1 1 12.5%;
+}
+
+cg-board {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--dark-square);
+  background-image:
+    linear-gradient(45deg, var(--light-square) 25%, transparent 25%),
+    linear-gradient(-45deg, var(--light-square) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, var(--light-square) 75%),
+    linear-gradient(-45deg, transparent 75%, var(--light-square) 75%);
+  background-position: 0 0, 0 50%, 50% -50%, -50% 0;
+  background-size: 25% 25%;
+}
+
+cg-board square,
+cg-board piece {
+  position: absolute;
+  display: block;
+  width: 12.5%;
+  height: 12.5%;
+}
+
+cg-board piece {
+  z-index: 2;
+  cursor: grab;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 86%;
+  will-change: transform;
+}
+
+cg-board piece.dragging {
+  z-index: 10;
+  cursor: grabbing;
+}
+
+cg-board square.selected {
+  background: rgba(255, 214, 92, 0.55);
+}
+
+cg-board square.last-move {
+  background: rgba(187, 203, 43, 0.45);
+}
+
+cg-board square.check {
+  background: radial-gradient(circle, rgba(255, 55, 55, 0.95), rgba(255, 55, 55, 0.08) 68%);
+}
+
+cg-board square.move-dest {
+  background: radial-gradient(rgba(20, 32, 44, 0.32) 19%, transparent 20%);
+}
+
+cg-board square.move-dest.oc {
+  background: radial-gradient(transparent 0%, transparent 78%, rgba(20, 32, 44, 0.35) 80%);
+}
+
+cg-board square.premove-dest {
+  background: radial-gradient(rgba(56, 120, 255, 0.42) 19%, transparent 20%);
+}
+
+cg-board square.current-premove {
+  background: rgba(76, 129, 255, 0.42);
+}
+
+.cg-wrap svg {
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+piece.white.pawn { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='78' x='50' text-anchor='middle' font-size='72'%3E%E2%99%99%3C/text%3E%3C/svg%3E"); }
+piece.white.knight { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='78' x='50' text-anchor='middle' font-size='72'%3E%E2%99%98%3C/text%3E%3C/svg%3E"); }
+piece.white.bishop { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='78' x='50' text-anchor='middle' font-size='72'%3E%E2%99%97%3C/text%3E%3C/svg%3E"); }
+piece.white.rook { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='78' x='50' text-anchor='middle' font-size='72'%3E%E2%99%96%3C/text%3E%3C/svg%3E"); }
+piece.white.queen { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='78' x='50' text-anchor='middle' font-size='72'%3E%E2%99%95%3C/text%3E%3C/svg%3E"); }
+piece.white.king { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='78' x='50' text-anchor='middle' font-size='72'%3E%E2%99%94%3C/text%3E%3C/svg%3E"); }
+piece.black.pawn { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='78' x='50' text-anchor='middle' font-size='72'%3E%E2%99%9F%3C/text%3E%3C/svg%3E"); }
+piece.black.knight { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='78' x='50' text-anchor='middle' font-size='72'%3E%E2%99%9E%3C/text%3E%3C/svg%3E"); }
+piece.black.bishop { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='78' x='50' text-anchor='middle' font-size='72'%3E%E2%99%9D%3C/text%3E%3C/svg%3E"); }
+piece.black.rook { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='78' x='50' text-anchor='middle' font-size='72'%3E%E2%99%9C%3C/text%3E%3C/svg%3E"); }
+piece.black.queen { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='78' x='50' text-anchor='middle' font-size='72'%3E%E2%99%9B%3C/text%3E%3C/svg%3E"); }
+piece.black.king { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='78' x='50' text-anchor='middle' font-size='72'%3E%E2%99%9A%3C/text%3E%3C/svg%3E"); }
+
+@media (max-width: 860px) {
+  .app-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .board-panel,
+  .info-panel {
+    order: unset;
+  }
+}
