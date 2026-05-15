@@ -15,10 +15,10 @@
   </head>
   <body>
     <header class="top-nav" aria-label="Primary navigation">
-      <a class="top-nav__brand" href="index.html">Chess Trainer</a>
-      <nav class="top-nav__links" aria-label="Tools menu">
-        <a href="index.html">Home</a>
-        <a aria-current="page" href="study-converter.html">Study JSON Converter</a>
+      <nav class="top-nav__controls" aria-label="Browser controls">
+        <a class="top-nav__button" href="index.html">Home</a>
+        <button class="top-nav__button" type="button" data-history="back" aria-label="Go back">&lt;</button>
+        <button class="top-nav__button" type="button" data-history="forward" aria-label="Go forward">&gt;</button>
       </nav>
     </header>
 
@@ -94,6 +94,7 @@
       </section>
     </main>
 
+    <script src="nav.js"></script>
     <script type="module" src="study-converter.js"></script>
   </body>
 </html>
