@@ -49,10 +49,49 @@ let turnColor = 'white';
 let lastMove = [];
 let isBlackThinking = false;
 
+const BOARD_MODES = {
+  repertoire: {
+    label: 'Repertoire training',
+    title: 'Repertoire Training Board',
+    description: 'Drill opening lines, plans, and key positions from a reusable chessboard workspace.',
+  },
+  survival: {
+    label: 'Survival',
+    title: 'Survival Board',
+    description: 'Solve from the board and keep going until the streak finally breaks.',
+  },
+  timed: {
+    label: 'Timed training',
+    title: 'Timed Board',
+    description: 'Use the shared board as the foundation for fast, clock-pressure tactical sets.',
+  },
+  chapter: {
+    label: 'Chapter training',
+    title: 'Chapter Board',
+    description: 'Progress through curated lessons and milestones with a board ready for each position.',
+  },
+  weakness: {
+    label: 'Weakness review',
+    title: 'Weakness Board',
+    description: 'Review recurring mistakes and future adaptive exercises from this chessboard.',
+  },
+  flashcards: {
+    label: 'Flashcards',
+    title: 'Flashcards Board',
+    description: 'Pair memorization cards with a visual board for motifs, endgames, and repertoire notes.',
+  },
+};
+
 const boardElement = document.querySelector('#board');
 const statusElement = document.querySelector('#status');
 const resetButton = document.querySelector('#reset');
 const flipButton = document.querySelector('#flip');
+
+initializeModeContent();
+
+if (!boardElement || !statusElement || !resetButton || !flipButton) {
+  throw new Error('Training board markup is missing required elements.');
+}
 
 const board = Chessground(boardElement, {
   fen: RACING_KINGS_FEN,
@@ -95,6 +134,20 @@ const board = Chessground(boardElement, {
 resetButton.addEventListener('click', resetGame);
 flipButton.addEventListener('click', () => board.toggleOrientation());
 updateBoard('White to move');
+
+function initializeModeContent() {
+  const mode = new URLSearchParams(window.location.search).get('mode');
+  const content = BOARD_MODES[mode] || {
+    label: 'Training board',
+    title: 'Chessboard workspace',
+    description: 'Use this shared board as the starting workspace for your selected training mode.',
+  };
+
+  document.title = `${content.title} | Chess Trainer`;
+  document.querySelector('#mode-label').textContent = content.label;
+  document.querySelector('#mode-title').textContent = content.title;
+  document.querySelector('#mode-description').textContent = content.description;
+}
 
 function onUserMove(orig, dest) {
   if (turnColor !== 'white' || isBlackThinking) return;

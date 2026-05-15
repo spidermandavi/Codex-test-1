@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chess Trainer Board</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="src/styles.css" />
+  </head>
+  <body class="board-page">
+    <header class="top-nav" aria-label="Primary navigation">
+      <a class="top-nav__brand" href="index.html">Chess Trainer</a>
+      <nav class="top-nav__links" aria-label="Tools menu">
+        <a href="index.html">Home</a>
+        <a aria-current="page" href="training-board.html">Training Board</a>
+        <a href="study-converter.html">Study JSON Converter</a>
+      </nav>
+    </header>
+
+    <main class="app-shell" aria-labelledby="mode-title">
+      <section class="board-panel" aria-label="Interactive chessboard">
+        <div class="board-card">
+          <div id="board"></div>
+        </div>
+      </section>
+
+      <section class="info-panel">
+        <div class="panel-heading">
+          <p class="eyebrow" id="mode-label">Training board</p>
+          <h1 id="mode-title">Chessboard workspace</h1>
+          <p class="lede" id="mode-description">
+            Use this shared board as the starting workspace for your selected training mode.
+          </p>
+        </div>
+
+        <div class="status-card" aria-live="polite">
+          <p class="status-label">Board status</p>
+          <strong id="status">Loading board…</strong>
+        </div>
+
+        <div class="actions" aria-label="Board controls">
+          <button type="button" id="reset">Reset board</button>
+          <button type="button" id="flip">Flip board</button>
+        </div>
+
+        <ul class="feature-list">
+          <li>Arrives from every home menu option except the Study JSON Converter.</li>
+          <li>Keeps the selected mode in the page URL so each tool can customize this board later.</li>
+          <li>Includes legal move hints, highlights, premoves, and quick reset/flip controls.</li>
+        </ul>
+      </section>
+    </main>
+
+    <script type="module" src="src/app.js"></script>
+  </body>
+</html>
