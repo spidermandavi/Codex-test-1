@@ -1,0 +1,1239 @@
+{
+  "schemaVersion": 1,
+  "type": "lichess-study-repertoire",
+  "name": "Imported Lichess Study",
+  "generatedAt": "2026-05-15T11:45:14.442Z",
+  "mergeStrategy": {
+    "key": "chapters[].moveTree.nodes[].path",
+    "description": "Merge future files by matching each node path from the same starting FEN."
+  },
+  "source": {
+    "provider": "lichess",
+    "url": "https://lichess.org/study/9yMz2AyQ",
+    "studyId": "9yMz2AyQ",
+    "chapterId": null
+  },
+  "chapters": [
+    {
+      "id": "knight-openings",
+      "name": "Knight openings",
+      "index": 0,
+      "tags": {
+        "Event": "RK opening tree test 1: Knight openings",
+        "Date": "2026.05.13",
+        "Result": "*",
+        "Variant": "Racing Kings",
+        "ECO": "?",
+        "Opening": "?",
+        "StudyName": "RK opening tree test 1",
+        "ChapterName": "Knight openings",
+        "ChapterURL": "https://lichess.org/study/9yMz2AyQ/12g5y3G8",
+        "Annotator": "https://lichess.org/@/Mysterious_Past",
+        "FEN": "8/8/8/8/8/8/krbnNBRK/qrbnNBRQ w - - 0 1",
+        "SetUp": "1",
+        "UTCDate": "2026.05.13",
+        "UTCTime": "04:01:56"
+      },
+      "initialFen": "8/8/8/8/8/8/krbnNBRK/qrbnNBRQ w - - 0 1",
+      "moveTree": {
+        "startingFen": "8/8/8/8/8/8/krbnNBRK/qrbnNBRQ w - - 0 1",
+        "startingComments": [],
+        "nodes": [
+          {
+            "id": "line-nxc2",
+            "san": "Nxc2",
+            "path": [
+              "Nxc2"
+            ],
+            "comments": [],
+            "nags": [],
+            "children": [
+              {
+                "id": "line-nxc2-nxf2",
+                "san": "Nxf2",
+                "path": [
+                  "Nxc2",
+                  "Nxf2"
+                ],
+                "comments": [],
+                "nags": [],
+                "children": [
+                  {
+                    "id": "line-nxc2-nxf2-rxf2",
+                    "san": "Rxf2",
+                    "path": [
+                      "Nxc2",
+                      "Nxf2",
+                      "Rxf2"
+                    ],
+                    "comments": [],
+                    "nags": [],
+                    "children": [
+                      {
+                        "id": "line-nxc2-nxf2-rxf2-rxc2",
+                        "san": "Rxc2",
+                        "path": [
+                          "Nxc2",
+                          "Nxf2",
+                          "Rxf2",
+                          "Rxc2"
+                        ],
+                        "comments": [],
+                        "nags": [],
+                        "children": [
+                          {
+                            "id": "line-nxc2-nxf2-rxf2-rxc2-kg3",
+                            "san": "Kg3",
+                            "path": [
+                              "Nxc2",
+                              "Nxf2",
+                              "Rxf2",
+                              "Rxc2",
+                              "Kg3"
+                            ],
+                            "comments": [],
+                            "nags": [],
+                            "children": [
+                              {
+                                "id": "line-nxc2-nxf2-rxf2-rxc2-kg3-kb3",
+                                "san": "Kb3",
+                                "path": [
+                                  "Nxc2",
+                                  "Nxf2",
+                                  "Rxf2",
+                                  "Rxc2",
+                                  "Kg3",
+                                  "Kb3"
+                                ],
+                                "comments": [],
+                                "nags": [],
+                                "children": [
+                                  {
+                                    "id": "line-nxc2-nxf2-rxf2-rxc2-kg3-kb3-rf5",
+                                    "san": "Rf5",
+                                    "path": [
+                                      "Nxc2",
+                                      "Nxf2",
+                                      "Rxf2",
+                                      "Rxc2",
+                                      "Kg3",
+                                      "Kb3",
+                                      "Rf5"
+                                    ],
+                                    "comments": [],
+                                    "nags": [],
+                                    "children": [
+                                      {
+                                        "id": "line-nxc2-nxf2-rxf2-rxc2-kg3-kb3-rf5-kb4",
+                                        "san": "Kb4",
+                                        "path": [
+                                          "Nxc2",
+                                          "Nxf2",
+                                          "Rxf2",
+                                          "Rxc2",
+                                          "Kg3",
+                                          "Kb3",
+                                          "Rf5",
+                                          "Kb4"
+                                        ],
+                                        "comments": [],
+                                        "nags": [],
+                                        "children": [
+                                          {
+                                            "id": "line-nxc2-nxf2-rxf2-rxc2-kg3-kb3-rf5-kb4-kf4",
+                                            "san": "Kf4",
+                                            "path": [
+                                              "Nxc2",
+                                              "Nxf2",
+                                              "Rxf2",
+                                              "Rxc2",
+                                              "Kg3",
+                                              "Kb3",
+                                              "Rf5",
+                                              "Kb4",
+                                              "Kf4"
+                                            ],
+                                            "comments": [],
+                                            "nags": [],
+                                            "children": [
+                                              {
+                                                "id": "line-nxc2-nxf2-rxf2-rxc2-kg3-kb3-rf5-kb4-kf4-rc5",
+                                                "san": "Rc5",
+                                                "path": [
+                                                  "Nxc2",
+                                                  "Nxf2",
+                                                  "Rxf2",
+                                                  "Rxc2",
+                                                  "Kg3",
+                                                  "Kb3",
+                                                  "Rf5",
+                                                  "Kb4",
+                                                  "Kf4",
+                                                  "Rc5"
+                                                ],
+                                                "comments": [],
+                                                "nags": [],
+                                                "children": [
+                                                  {
+                                                    "id": "line-nxc2-nxf2-rxf2-rxc2-kg3-kb3-rf5-kb4-kf4-rc5-nd4",
+                                                    "san": "Nd4",
+                                                    "path": [
+                                                      "Nxc2",
+                                                      "Nxf2",
+                                                      "Rxf2",
+                                                      "Rxc2",
+                                                      "Kg3",
+                                                      "Kb3",
+                                                      "Rf5",
+                                                      "Kb4",
+                                                      "Kf4",
+                                                      "Rc5",
+                                                      "Nd4"
+                                                    ],
+                                                    "comments": [],
+                                                    "nags": [],
+                                                    "children": [
+                                                      {
+                                                        "id": "line-nxc2-nxf2-rxf2-rxc2-kg3-kb3-rf5-kb4-kf4-rc5-nd4-ka5",
+                                                        "san": "Ka5",
+                                                        "path": [
+                                                          "Nxc2",
+                                                          "Nxf2",
+                                                          "Rxf2",
+                                                          "Rxc2",
+                                                          "Kg3",
+                                                          "Kb3",
+                                                          "Rf5",
+                                                          "Kb4",
+                                                          "Kf4",
+                                                          "Rc5",
+                                                          "Nd4",
+                                                          "Ka5"
+                                                        ],
+                                                        "comments": [],
+                                                        "nags": [],
+                                                        "children": [
+                                                          {
+                                                            "id": "line-nxc2-nxf2-rxf2-rxc2-kg3-kb3-rf5-kb4-kf4-rc5-nd4-ka5-ne6",
+                                                            "san": "Ne6",
+                                                            "path": [
+                                                              "Nxc2",
+                                                              "Nxf2",
+                                                              "Rxf2",
+                                                              "Rxc2",
+                                                              "Kg3",
+                                                              "Kb3",
+                                                              "Rf5",
+                                                              "Kb4",
+                                                              "Kf4",
+                                                              "Rc5",
+                                                              "Nd4",
+                                                              "Ka5",
+                                                              "Ne6"
+                                                            ],
+                                                            "comments": [],
+                                                            "nags": [],
+                                                            "children": [
+                                                              {
+                                                                "id": "line-nxc2-nxf2-rxf2-rxc2-kg3-kb3-rf5-kb4-kf4-rc5-nd4-ka5-ne6-kb6",
+                                                                "san": "Kb6",
+                                                                "path": [
+                                                                  "Nxc2",
+                                                                  "Nxf2",
+                                                                  "Rxf2",
+                                                                  "Rxc2",
+                                                                  "Kg3",
+                                                                  "Kb3",
+                                                                  "Rf5",
+                                                                  "Kb4",
+                                                                  "Kf4",
+                                                                  "Rc5",
+                                                                  "Nd4",
+                                                                  "Ka5",
+                                                                  "Ne6",
+                                                                  "Kb6"
+                                                                ],
+                                                                "comments": [],
+                                                                "nags": [],
+                                                                "children": [
+                                                                  {
+                                                                    "id": "line-nxc2-nxf2-rxf2-rxc2-kg3-kb3-rf5-kb4-kf4-rc5-nd4-ka5-ne6-kb6-rxc5",
+                                                                    "san": "Rxc5",
+                                                                    "path": [
+                                                                      "Nxc2",
+                                                                      "Nxf2",
+                                                                      "Rxf2",
+                                                                      "Rxc2",
+                                                                      "Kg3",
+                                                                      "Kb3",
+                                                                      "Rf5",
+                                                                      "Kb4",
+                                                                      "Kf4",
+                                                                      "Rc5",
+                                                                      "Nd4",
+                                                                      "Ka5",
+                                                                      "Ne6",
+                                                                      "Kb6",
+                                                                      "Rxc5"
+                                                                    ],
+                                                                    "comments": [],
+                                                                    "nags": [],
+                                                                    "children": [
+                                                                      {
+                                                                        "id": "line-nxc2-nxf2-rxf2-rxc2-kg3-kb3-rf5-kb4-kf4-rc5-nd4-ka5-ne6-kb6-rxc5-ka7",
+                                                                        "san": "Ka7",
+                                                                        "path": [
+                                                                          "Nxc2",
+                                                                          "Nxf2",
+                                                                          "Rxf2",
+                                                                          "Rxc2",
+                                                                          "Kg3",
+                                                                          "Kb3",
+                                                                          "Rf5",
+                                                                          "Kb4",
+                                                                          "Kf4",
+                                                                          "Rc5",
+                                                                          "Nd4",
+                                                                          "Ka5",
+                                                                          "Ne6",
+                                                                          "Kb6",
+                                                                          "Rxc5",
+                                                                          "Ka7"
+                                                                        ],
+                                                                        "comments": [],
+                                                                        "nags": [],
+                                                                        "children": [
+                                                                          {
+                                                                            "id": "line-nxc2-nxf2-rxf2-rxc2-kg3-kb3-rf5-kb4-kf4-rc5-nd4-ka5-ne6-kb6-rxc5-ka7-rc8",
+                                                                            "san": "Rc8",
+                                                                            "path": [
+                                                                              "Nxc2",
+                                                                              "Nxf2",
+                                                                              "Rxf2",
+                                                                              "Rxc2",
+                                                                              "Kg3",
+                                                                              "Kb3",
+                                                                              "Rf5",
+                                                                              "Kb4",
+                                                                              "Kf4",
+                                                                              "Rc5",
+                                                                              "Nd4",
+                                                                              "Ka5",
+                                                                              "Ne6",
+                                                                              "Kb6",
+                                                                              "Rxc5",
+                                                                              "Ka7",
+                                                                              "Rc8"
+                                                                            ],
+                                                                            "comments": [],
+                                                                            "nags": [],
+                                                                            "children": [
+                                                                              {
+                                                                                "id": "line-nxc2-nxf2-rxf2-rxc2-kg3-kb3-rf5-kb4-kf4-rc5-nd4-ka5-ne6-kb6-rxc5-ka7-rc8-ba3",
+                                                                                "san": "Ba3",
+                                                                                "path": [
+                                                                                  "Nxc2",
+                                                                                  "Nxf2",
+                                                                                  "Rxf2",
+                                                                                  "Rxc2",
+                                                                                  "Kg3",
+                                                                                  "Kb3",
+                                                                                  "Rf5",
+                                                                                  "Kb4",
+                                                                                  "Kf4",
+                                                                                  "Rc5",
+                                                                                  "Nd4",
+                                                                                  "Ka5",
+                                                                                  "Ne6",
+                                                                                  "Kb6",
+                                                                                  "Rxc5",
+                                                                                  "Ka7",
+                                                                                  "Rc8",
+                                                                                  "Ba3"
+                                                                                ],
+                                                                                "comments": [],
+                                                                                "nags": [],
+                                                                                "children": [
+                                                                                  {
+                                                                                    "id": "line-nxc2-nxf2-rxf2-rxc2-kg3-kb3-rf5-kb4-kf4-rc5-nd4-ka5-ne6-kb6-rxc5-ka7-rc8-ba3-kf5",
+                                                                                    "san": "Kf5",
+                                                                                    "path": [
+                                                                                      "Nxc2",
+                                                                                      "Nxf2",
+                                                                                      "Rxf2",
+                                                                                      "Rxc2",
+                                                                                      "Kg3",
+                                                                                      "Kb3",
+                                                                                      "Rf5",
+                                                                                      "Kb4",
+                                                                                      "Kf4",
+                                                                                      "Rc5",
+                                                                                      "Nd4",
+                                                                                      "Ka5",
+                                                                                      "Ne6",
+                                                                                      "Kb6",
+                                                                                      "Rxc5",
+                                                                                      "Ka7",
+                                                                                      "Rc8",
+                                                                                      "Ba3",
+                                                                                      "Kf5"
+                                                                                    ],
+                                                                                    "comments": [],
+                                                                                    "nags": [],
+                                                                                    "children": [
+                                                                                      {
+                                                                                        "id": "line-nxc2-nxf2-rxf2-rxc2-kg3-kb3-rf5-kb4-kf4-rc5-nd4-ka5-ne6-kb6-rxc5-ka7-rc8-ba3-kf5-nxf1",
+                                                                                        "san": "Nxf1",
+                                                                                        "path": [
+                                                                                          "Nxc2",
+                                                                                          "Nxf2",
+                                                                                          "Rxf2",
+                                                                                          "Rxc2",
+                                                                                          "Kg3",
+                                                                                          "Kb3",
+                                                                                          "Rf5",
+                                                                                          "Kb4",
+                                                                                          "Kf4",
+                                                                                          "Rc5",
+                                                                                          "Nd4",
+                                                                                          "Ka5",
+                                                                                          "Ne6",
+                                                                                          "Kb6",
+                                                                                          "Rxc5",
+                                                                                          "Ka7",
+                                                                                          "Rc8",
+                                                                                          "Ba3",
+                                                                                          "Kf5",
+                                                                                          "Nxf1"
+                                                                                        ],
+                                                                                        "comments": [],
+                                                                                        "nags": [],
+                                                                                        "children": []
+                                                                                      }
+                                                                                    ]
+                                                                                  }
+                                                                                ]
+                                                                              }
+                                                                            ]
+                                                                          }
+                                                                        ]
+                                                                      }
+                                                                    ]
+                                                                  }
+                                                                ]
+                                                              }
+                                                            ]
+                                                          }
+                                                        ]
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "line-nxc2-nxf2-kg3",
+                    "san": "Kg3",
+                    "path": [
+                      "Nxc2",
+                      "Nxf2",
+                      "Kg3"
+                    ],
+                    "comments": [],
+                    "nags": [],
+                    "children": [
+                      {
+                        "id": "line-nxc2-nxf2-kg3-rxc2",
+                        "san": "Rxc2",
+                        "path": [
+                          "Nxc2",
+                          "Nxf2",
+                          "Kg3",
+                          "Rxc2"
+                        ],
+                        "comments": [],
+                        "nags": [],
+                        "children": [
+                          {
+                            "id": "line-nxc2-nxf2-kg3-rxc2-rxf2",
+                            "san": "Rxf2",
+                            "path": [
+                              "Nxc2",
+                              "Nxf2",
+                              "Kg3",
+                              "Rxc2",
+                              "Rxf2"
+                            ],
+                            "comments": [],
+                            "nags": [],
+                            "children": [
+                              {
+                                "id": "line-nxc2-nxf2-kg3-rxc2-rxf2-kb3",
+                                "san": "Kb3",
+                                "path": [
+                                  "Nxc2",
+                                  "Nxf2",
+                                  "Kg3",
+                                  "Rxc2",
+                                  "Rxf2",
+                                  "Kb3"
+                                ],
+                                "comments": [],
+                                "nags": [],
+                                "children": [
+                                  {
+                                    "id": "line-nxc2-nxf2-kg3-rxc2-rxf2-kb3-rf5",
+                                    "san": "Rf5",
+                                    "path": [
+                                      "Nxc2",
+                                      "Nxf2",
+                                      "Kg3",
+                                      "Rxc2",
+                                      "Rxf2",
+                                      "Kb3",
+                                      "Rf5"
+                                    ],
+                                    "comments": [],
+                                    "nags": [],
+                                    "children": [
+                                      {
+                                        "id": "line-nxc2-nxf2-kg3-rxc2-rxf2-kb3-rf5-bb2",
+                                        "san": "Bb2",
+                                        "path": [
+                                          "Nxc2",
+                                          "Nxf2",
+                                          "Kg3",
+                                          "Rxc2",
+                                          "Rxf2",
+                                          "Kb3",
+                                          "Rf5",
+                                          "Bb2"
+                                        ],
+                                        "comments": [],
+                                        "nags": [],
+                                        "children": [
+                                          {
+                                            "id": "line-nxc2-nxf2-kg3-rxc2-rxf2-kb3-rf5-bb2-kf4",
+                                            "san": "Kf4",
+                                            "path": [
+                                              "Nxc2",
+                                              "Nxf2",
+                                              "Kg3",
+                                              "Rxc2",
+                                              "Rxf2",
+                                              "Kb3",
+                                              "Rf5",
+                                              "Bb2",
+                                              "Kf4"
+                                            ],
+                                            "comments": [],
+                                            "nags": [],
+                                            "children": [
+                                              {
+                                                "id": "line-nxc2-nxf2-kg3-rxc2-rxf2-kb3-rf5-bb2-kf4-rc7",
+                                                "san": "Rc7",
+                                                "path": [
+                                                  "Nxc2",
+                                                  "Nxf2",
+                                                  "Kg3",
+                                                  "Rxc2",
+                                                  "Rxf2",
+                                                  "Kb3",
+                                                  "Rf5",
+                                                  "Bb2",
+                                                  "Kf4",
+                                                  "Rc7"
+                                                ],
+                                                "comments": [],
+                                                "nags": [],
+                                                "children": [
+                                                  {
+                                                    "id": "line-nxc2-nxf2-kg3-rxc2-rxf2-kb3-rf5-bb2-kf4-rc7-ng3",
+                                                    "san": "Ng3",
+                                                    "path": [
+                                                      "Nxc2",
+                                                      "Nxf2",
+                                                      "Kg3",
+                                                      "Rxc2",
+                                                      "Rxf2",
+                                                      "Kb3",
+                                                      "Rf5",
+                                                      "Bb2",
+                                                      "Kf4",
+                                                      "Rc7",
+                                                      "Ng3"
+                                                    ],
+                                                    "comments": [],
+                                                    "nags": [],
+                                                    "children": [
+                                                      {
+                                                        "id": "line-nxc2-nxf2-kg3-rxc2-rxf2-kb3-rf5-bb2-kf4-rc7-ng3-bd4",
+                                                        "san": "Bd4",
+                                                        "path": [
+                                                          "Nxc2",
+                                                          "Nxf2",
+                                                          "Kg3",
+                                                          "Rxc2",
+                                                          "Rxf2",
+                                                          "Kb3",
+                                                          "Rf5",
+                                                          "Bb2",
+                                                          "Kf4",
+                                                          "Rc7",
+                                                          "Ng3",
+                                                          "Bd4"
+                                                        ],
+                                                        "comments": [],
+                                                        "nags": [],
+                                                        "children": [
+                                                          {
+                                                            "id": "line-nxc2-nxf2-kg3-rxc2-rxf2-kb3-rf5-bb2-kf4-rc7-ng3-bd4-qg2",
+                                                            "san": "Qg2",
+                                                            "path": [
+                                                              "Nxc2",
+                                                              "Nxf2",
+                                                              "Kg3",
+                                                              "Rxc2",
+                                                              "Rxf2",
+                                                              "Kb3",
+                                                              "Rf5",
+                                                              "Bb2",
+                                                              "Kf4",
+                                                              "Rc7",
+                                                              "Ng3",
+                                                              "Bd4",
+                                                              "Qg2"
+                                                            ],
+                                                            "comments": [],
+                                                            "nags": [],
+                                                            "children": [
+                                                              {
+                                                                "id": "line-nxc2-nxf2-kg3-rxc2-rxf2-kb3-rf5-bb2-kf4-rc7-ng3-bd4-qg2-kb4",
+                                                                "san": "Kb4",
+                                                                "path": [
+                                                                  "Nxc2",
+                                                                  "Nxf2",
+                                                                  "Kg3",
+                                                                  "Rxc2",
+                                                                  "Rxf2",
+                                                                  "Kb3",
+                                                                  "Rf5",
+                                                                  "Bb2",
+                                                                  "Kf4",
+                                                                  "Rc7",
+                                                                  "Ng3",
+                                                                  "Bd4",
+                                                                  "Qg2",
+                                                                  "Kb4"
+                                                                ],
+                                                                "comments": [],
+                                                                "nags": [],
+                                                                "children": [
+                                                                  {
+                                                                    "id": "line-nxc2-nxf2-kg3-rxc2-rxf2-kb3-rf5-bb2-kf4-rc7-ng3-bd4-qg2-kb4-rh1",
+                                                                    "san": "Rh1",
+                                                                    "path": [
+                                                                      "Nxc2",
+                                                                      "Nxf2",
+                                                                      "Kg3",
+                                                                      "Rxc2",
+                                                                      "Rxf2",
+                                                                      "Kb3",
+                                                                      "Rf5",
+                                                                      "Bb2",
+                                                                      "Kf4",
+                                                                      "Rc7",
+                                                                      "Ng3",
+                                                                      "Bd4",
+                                                                      "Qg2",
+                                                                      "Kb4",
+                                                                      "Rh1"
+                                                                    ],
+                                                                    "comments": [],
+                                                                    "nags": [],
+                                                                    "children": [
+                                                                      {
+                                                                        "id": "line-nxc2-nxf2-kg3-rxc2-rxf2-kb3-rf5-bb2-kf4-rc7-ng3-bd4-qg2-kb4-rh1-nxf1",
+                                                                        "san": "Nxf1",
+                                                                        "path": [
+                                                                          "Nxc2",
+                                                                          "Nxf2",
+                                                                          "Kg3",
+                                                                          "Rxc2",
+                                                                          "Rxf2",
+                                                                          "Kb3",
+                                                                          "Rf5",
+                                                                          "Bb2",
+                                                                          "Kf4",
+                                                                          "Rc7",
+                                                                          "Ng3",
+                                                                          "Bd4",
+                                                                          "Qg2",
+                                                                          "Kb4",
+                                                                          "Rh1",
+                                                                          "Nxf1"
+                                                                        ],
+                                                                        "comments": [],
+                                                                        "nags": [],
+                                                                        "children": [
+                                                                          {
+                                                                            "id": "line-nxc2-nxf2-kg3-rxc2-rxf2-kb3-rf5-bb2-kf4-rc7-ng3-bd4-qg2-kb4-rh1-nxf1-qxf1",
+                                                                            "san": "Qxf1",
+                                                                            "path": [
+                                                                              "Nxc2",
+                                                                              "Nxf2",
+                                                                              "Kg3",
+                                                                              "Rxc2",
+                                                                              "Rxf2",
+                                                                              "Kb3",
+                                                                              "Rf5",
+                                                                              "Bb2",
+                                                                              "Kf4",
+                                                                              "Rc7",
+                                                                              "Ng3",
+                                                                              "Bd4",
+                                                                              "Qg2",
+                                                                              "Kb4",
+                                                                              "Rh1",
+                                                                              "Nxf1",
+                                                                              "Qxf1"
+                                                                            ],
+                                                                            "comments": [],
+                                                                            "nags": [],
+                                                                            "children": [
+                                                                              {
+                                                                                "id": "line-nxc2-nxf2-kg3-rxc2-rxf2-kb3-rf5-bb2-kf4-rc7-ng3-bd4-qg2-kb4-rh1-nxf1-qxf1-rb7",
+                                                                                "san": "Rb7",
+                                                                                "path": [
+                                                                                  "Nxc2",
+                                                                                  "Nxf2",
+                                                                                  "Kg3",
+                                                                                  "Rxc2",
+                                                                                  "Rxf2",
+                                                                                  "Kb3",
+                                                                                  "Rf5",
+                                                                                  "Bb2",
+                                                                                  "Kf4",
+                                                                                  "Rc7",
+                                                                                  "Ng3",
+                                                                                  "Bd4",
+                                                                                  "Qg2",
+                                                                                  "Kb4",
+                                                                                  "Rh1",
+                                                                                  "Nxf1",
+                                                                                  "Qxf1",
+                                                                                  "Rb7"
+                                                                                ],
+                                                                                "comments": [],
+                                                                                "nags": [],
+                                                                                "children": [
+                                                                                  {
+                                                                                    "id": "line-nxc2-nxf2-kg3-rxc2-rxf2-kb3-rf5-bb2-kf4-rc7-ng3-bd4-qg2-kb4-rh1-nxf1-qxf1-rb7-rh6",
+                                                                                    "san": "Rh6",
+                                                                                    "path": [
+                                                                                      "Nxc2",
+                                                                                      "Nxf2",
+                                                                                      "Kg3",
+                                                                                      "Rxc2",
+                                                                                      "Rxf2",
+                                                                                      "Kb3",
+                                                                                      "Rf5",
+                                                                                      "Bb2",
+                                                                                      "Kf4",
+                                                                                      "Rc7",
+                                                                                      "Ng3",
+                                                                                      "Bd4",
+                                                                                      "Qg2",
+                                                                                      "Kb4",
+                                                                                      "Rh1",
+                                                                                      "Nxf1",
+                                                                                      "Qxf1",
+                                                                                      "Rb7",
+                                                                                      "Rh6"
+                                                                                    ],
+                                                                                    "comments": [],
+                                                                                    "nags": [],
+                                                                                    "children": [
+                                                                                      {
+                                                                                        "id": "line-nxc2-nxf2-kg3-rxc2-rxf2-kb3-rf5-bb2-kf4-rc7-ng3-bd4-qg2-kb4-rh1-nxf1-qxf1-rb7-rh6-rb6",
+                                                                                        "san": "Rb6",
+                                                                                        "path": [
+                                                                                          "Nxc2",
+                                                                                          "Nxf2",
+                                                                                          "Kg3",
+                                                                                          "Rxc2",
+                                                                                          "Rxf2",
+                                                                                          "Kb3",
+                                                                                          "Rf5",
+                                                                                          "Bb2",
+                                                                                          "Kf4",
+                                                                                          "Rc7",
+                                                                                          "Ng3",
+                                                                                          "Bd4",
+                                                                                          "Qg2",
+                                                                                          "Kb4",
+                                                                                          "Rh1",
+                                                                                          "Nxf1",
+                                                                                          "Qxf1",
+                                                                                          "Rb7",
+                                                                                          "Rh6",
+                                                                                          "Rb6"
+                                                                                        ],
+                                                                                        "comments": [],
+                                                                                        "nags": [],
+                                                                                        "children": []
+                                                                                      }
+                                                                                    ]
+                                                                                  }
+                                                                                ]
+                                                                              }
+                                                                            ]
+                                                                          }
+                                                                        ]
+                                                                      }
+                                                                    ]
+                                                                  }
+                                                                ]
+                                                              }
+                                                            ]
+                                                          }
+                                                        ]
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "line-nxc2-kb3",
+                "san": "Kb3",
+                "path": [
+                  "Nxc2",
+                  "Kb3"
+                ],
+                "comments": [],
+                "nags": [],
+                "children": [
+                  {
+                    "id": "line-nxc2-kb3-nc3",
+                    "san": "Nc3",
+                    "path": [
+                      "Nxc2",
+                      "Kb3",
+                      "Nc3"
+                    ],
+                    "comments": [],
+                    "nags": [],
+                    "children": [
+                      {
+                        "id": "line-nxc2-kb3-nc3-nxc3",
+                        "san": "Nxc3",
+                        "path": [
+                          "Nxc2",
+                          "Kb3",
+                          "Nc3",
+                          "Nxc3"
+                        ],
+                        "comments": [],
+                        "nags": [],
+                        "children": [
+                          {
+                            "id": "line-nxc2-kb3-nc3-nxc3-kg3",
+                            "san": "Kg3",
+                            "path": [
+                              "Nxc2",
+                              "Kb3",
+                              "Nc3",
+                              "Nxc3",
+                              "Kg3"
+                            ],
+                            "comments": [],
+                            "nags": [],
+                            "children": [
+                              {
+                                "id": "line-nxc2-kb3-nc3-nxc3-kg3-qa4",
+                                "san": "Qa4",
+                                "path": [
+                                  "Nxc2",
+                                  "Kb3",
+                                  "Nc3",
+                                  "Nxc3",
+                                  "Kg3",
+                                  "Qa4"
+                                ],
+                                "comments": [],
+                                "nags": [],
+                                "children": [
+                                  {
+                                    "id": "line-nxc2-kb3-nc3-nxc3-kg3-qa4-ne1",
+                                    "san": "Ne1",
+                                    "path": [
+                                      "Nxc2",
+                                      "Kb3",
+                                      "Nc3",
+                                      "Nxc3",
+                                      "Kg3",
+                                      "Qa4",
+                                      "Ne1"
+                                    ],
+                                    "comments": [],
+                                    "nags": [],
+                                    "children": [
+                                      {
+                                        "id": "line-nxc2-kb3-nc3-nxc3-kg3-qa4-ne1-nd1",
+                                        "san": "Nd1",
+                                        "path": [
+                                          "Nxc2",
+                                          "Kb3",
+                                          "Nc3",
+                                          "Nxc3",
+                                          "Kg3",
+                                          "Qa4",
+                                          "Ne1",
+                                          "Nd1"
+                                        ],
+                                        "comments": [],
+                                        "nags": [],
+                                        "children": [
+                                          {
+                                            "id": "line-nxc2-kb3-nc3-nxc3-kg3-qa4-ne1-nd1-qh4",
+                                            "san": "Qh4",
+                                            "path": [
+                                              "Nxc2",
+                                              "Kb3",
+                                              "Nc3",
+                                              "Nxc3",
+                                              "Kg3",
+                                              "Qa4",
+                                              "Ne1",
+                                              "Nd1",
+                                              "Qh4"
+                                            ],
+                                            "comments": [],
+                                            "nags": [],
+                                            "children": [
+                                              {
+                                                "id": "line-nxc2-kb3-nc3-nxc3-kg3-qa4-ne1-nd1-qh4-nxf2",
+                                                "san": "Nxf2",
+                                                "path": [
+                                                  "Nxc2",
+                                                  "Kb3",
+                                                  "Nc3",
+                                                  "Nxc3",
+                                                  "Kg3",
+                                                  "Qa4",
+                                                  "Ne1",
+                                                  "Nd1",
+                                                  "Qh4",
+                                                  "Nxf2"
+                                                ],
+                                                "comments": [],
+                                                "nags": [],
+                                                "children": [
+                                                  {
+                                                    "id": "line-nxc2-kb3-nc3-nxc3-kg3-qa4-ne1-nd1-qh4-nxf2-kxf2",
+                                                    "san": "Kxf2",
+                                                    "path": [
+                                                      "Nxc2",
+                                                      "Kb3",
+                                                      "Nc3",
+                                                      "Nxc3",
+                                                      "Kg3",
+                                                      "Qa4",
+                                                      "Ne1",
+                                                      "Nd1",
+                                                      "Qh4",
+                                                      "Nxf2",
+                                                      "Kxf2"
+                                                    ],
+                                                    "comments": [],
+                                                    "nags": [],
+                                                    "children": [
+                                                      {
+                                                        "id": "line-nxc2-kb3-nc3-nxc3-kg3-qa4-ne1-nd1-qh4-nxf2-kxf2-ra2",
+                                                        "san": "Ra2",
+                                                        "path": [
+                                                          "Nxc2",
+                                                          "Kb3",
+                                                          "Nc3",
+                                                          "Nxc3",
+                                                          "Kg3",
+                                                          "Qa4",
+                                                          "Ne1",
+                                                          "Nd1",
+                                                          "Qh4",
+                                                          "Nxf2",
+                                                          "Kxf2",
+                                                          "Ra2"
+                                                        ],
+                                                        "comments": [],
+                                                        "nags": [],
+                                                        "children": [
+                                                          {
+                                                            "id": "line-nxc2-kb3-nc3-nxc3-kg3-qa4-ne1-nd1-qh4-nxf2-kxf2-ra2-rg4",
+                                                            "san": "Rg4",
+                                                            "path": [
+                                                              "Nxc2",
+                                                              "Kb3",
+                                                              "Nc3",
+                                                              "Nxc3",
+                                                              "Kg3",
+                                                              "Qa4",
+                                                              "Ne1",
+                                                              "Nd1",
+                                                              "Qh4",
+                                                              "Nxf2",
+                                                              "Kxf2",
+                                                              "Ra2",
+                                                              "Rg4"
+                                                            ],
+                                                            "comments": [],
+                                                            "nags": [],
+                                                            "children": [
+                                                              {
+                                                                "id": "line-nxc2-kb3-nc3-nxc3-kg3-qa4-ne1-nd1-qh4-nxf2-kxf2-ra2-rg4-bb2",
+                                                                "san": "Bb2",
+                                                                "path": [
+                                                                  "Nxc2",
+                                                                  "Kb3",
+                                                                  "Nc3",
+                                                                  "Nxc3",
+                                                                  "Kg3",
+                                                                  "Qa4",
+                                                                  "Ne1",
+                                                                  "Nd1",
+                                                                  "Qh4",
+                                                                  "Nxf2",
+                                                                  "Kxf2",
+                                                                  "Ra2",
+                                                                  "Rg4",
+                                                                  "Bb2"
+                                                                ],
+                                                                "comments": [],
+                                                                "nags": [],
+                                                                "children": [
+                                                                  {
+                                                                    "id": "line-nxc2-kb3-nc3-nxc3-kg3-qa4-ne1-nd1-qh4-nxf2-kxf2-ra2-rg4-bb2-ke3",
+                                                                    "san": "Ke3",
+                                                                    "path": [
+                                                                      "Nxc2",
+                                                                      "Kb3",
+                                                                      "Nc3",
+                                                                      "Nxc3",
+                                                                      "Kg3",
+                                                                      "Qa4",
+                                                                      "Ne1",
+                                                                      "Nd1",
+                                                                      "Qh4",
+                                                                      "Nxf2",
+                                                                      "Kxf2",
+                                                                      "Ra2",
+                                                                      "Rg4",
+                                                                      "Bb2",
+                                                                      "Ke3"
+                                                                    ],
+                                                                    "comments": [],
+                                                                    "nags": [],
+                                                                    "children": [
+                                                                      {
+                                                                        "id": "line-nxc2-kb3-nc3-nxc3-kg3-qa4-ne1-nd1-qh4-nxf2-kxf2-ra2-rg4-bb2-ke3-qb4",
+                                                                        "san": "Qb4",
+                                                                        "path": [
+                                                                          "Nxc2",
+                                                                          "Kb3",
+                                                                          "Nc3",
+                                                                          "Nxc3",
+                                                                          "Kg3",
+                                                                          "Qa4",
+                                                                          "Ne1",
+                                                                          "Nd1",
+                                                                          "Qh4",
+                                                                          "Nxf2",
+                                                                          "Kxf2",
+                                                                          "Ra2",
+                                                                          "Rg4",
+                                                                          "Bb2",
+                                                                          "Ke3",
+                                                                          "Qb4"
+                                                                        ],
+                                                                        "comments": [],
+                                                                        "nags": [],
+                                                                        "children": [
+                                                                          {
+                                                                            "id": "line-nxc2-kb3-nc3-nxc3-kg3-qa4-ne1-nd1-qh4-nxf2-kxf2-ra2-rg4-bb2-ke3-qb4-rf4",
+                                                                            "san": "Rf4",
+                                                                            "path": [
+                                                                              "Nxc2",
+                                                                              "Kb3",
+                                                                              "Nc3",
+                                                                              "Nxc3",
+                                                                              "Kg3",
+                                                                              "Qa4",
+                                                                              "Ne1",
+                                                                              "Nd1",
+                                                                              "Qh4",
+                                                                              "Nxf2",
+                                                                              "Kxf2",
+                                                                              "Ra2",
+                                                                              "Rg4",
+                                                                              "Bb2",
+                                                                              "Ke3",
+                                                                              "Qb4",
+                                                                              "Rf4"
+                                                                            ],
+                                                                            "comments": [],
+                                                                            "nags": [],
+                                                                            "children": [
+                                                                              {
+                                                                                "id": "line-nxc2-kb3-nc3-nxc3-kg3-qa4-ne1-nd1-qh4-nxf2-kxf2-ra2-rg4-bb2-ke3-qb4-rf4-rd1",
+                                                                                "san": "Rd1",
+                                                                                "path": [
+                                                                                  "Nxc2",
+                                                                                  "Kb3",
+                                                                                  "Nc3",
+                                                                                  "Nxc3",
+                                                                                  "Kg3",
+                                                                                  "Qa4",
+                                                                                  "Ne1",
+                                                                                  "Nd1",
+                                                                                  "Qh4",
+                                                                                  "Nxf2",
+                                                                                  "Kxf2",
+                                                                                  "Ra2",
+                                                                                  "Rg4",
+                                                                                  "Bb2",
+                                                                                  "Ke3",
+                                                                                  "Qb4",
+                                                                                  "Rf4",
+                                                                                  "Rd1"
+                                                                                ],
+                                                                                "comments": [],
+                                                                                "nags": [],
+                                                                                "children": [
+                                                                                  {
+                                                                                    "id": "line-nxc2-kb3-nc3-nxc3-kg3-qa4-ne1-nd1-qh4-nxf2-kxf2-ra2-rg4-bb2-ke3-qb4-rf4-rd1-nd3",
+                                                                                    "san": "Nd3",
+                                                                                    "path": [
+                                                                                      "Nxc2",
+                                                                                      "Kb3",
+                                                                                      "Nc3",
+                                                                                      "Nxc3",
+                                                                                      "Kg3",
+                                                                                      "Qa4",
+                                                                                      "Ne1",
+                                                                                      "Nd1",
+                                                                                      "Qh4",
+                                                                                      "Nxf2",
+                                                                                      "Kxf2",
+                                                                                      "Ra2",
+                                                                                      "Rg4",
+                                                                                      "Bb2",
+                                                                                      "Ke3",
+                                                                                      "Qb4",
+                                                                                      "Rf4",
+                                                                                      "Rd1",
+                                                                                      "Nd3"
+                                                                                    ],
+                                                                                    "comments": [],
+                                                                                    "nags": [],
+                                                                                    "children": [
+                                                                                      {
+                                                                                        "id": "line-nxc2-kb3-nc3-nxc3-kg3-qa4-ne1-nd1-qh4-nxf2-kxf2-ra2-rg4-bb2-ke3-qb4-rf4-rd1-nd3-qc3",
+                                                                                        "san": "Qc3",
+                                                                                        "path": [
+                                                                                          "Nxc2",
+                                                                                          "Kb3",
+                                                                                          "Nc3",
+                                                                                          "Nxc3",
+                                                                                          "Kg3",
+                                                                                          "Qa4",
+                                                                                          "Ne1",
+                                                                                          "Nd1",
+                                                                                          "Qh4",
+                                                                                          "Nxf2",
+                                                                                          "Kxf2",
+                                                                                          "Ra2",
+                                                                                          "Rg4",
+                                                                                          "Bb2",
+                                                                                          "Ke3",
+                                                                                          "Qb4",
+                                                                                          "Rf4",
+                                                                                          "Rd1",
+                                                                                          "Nd3",
+                                                                                          "Qc3"
+                                                                                        ],
+                                                                                        "comments": [],
+                                                                                        "nags": [],
+                                                                                        "children": []
+                                                                                      }
+                                                                                    ]
+                                                                                  }
+                                                                                ]
+                                                                              }
+                                                                            ]
+                                                                          }
+                                                                        ]
+                                                                      }
+                                                                    ]
+                                                                  }
+                                                                ]
+                                                              }
+                                                            ]
+                                                          }
+                                                        ]
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
