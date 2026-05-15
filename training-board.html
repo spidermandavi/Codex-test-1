@@ -43,15 +43,25 @@
           <strong id="status">Loading board…</strong>
         </div>
 
+        <div class="repertoire-controls" id="color-control">
+          <label for="training-color">Practice as</label>
+          <select id="training-color">
+            <option value="white">White</option>
+            <option value="black">Black</option>
+            <option value="random">Random</option>
+          </select>
+          <p id="repertoire-details">Loading repertoire JSON files…</p>
+        </div>
+
         <div class="actions" aria-label="Board controls">
           <button type="button" id="reset">Reset board</button>
           <button type="button" id="flip">Flip board</button>
         </div>
 
         <ul class="feature-list">
-          <li>Arrives from every home menu option except the Study JSON Converter.</li>
-          <li>Keeps the selected mode in the page URL so each tool can customize this board later.</li>
-          <li>Includes legal move hints, highlights, premoves, and quick reset/flip controls.</li>
+          <li>Repertoire mode loads committed JSON study files and only accepts moves from those lines.</li>
+          <li>Choose white, black, or random before drilling a repertoire from the starting position.</li>
+          <li>Includes legal move hints, highlights, and quick reset/flip controls.</li>
         </ul>
       </section>
     </main>
