@@ -3,55 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Racing Kings Chessground</title>
-    <link rel="stylesheet" href="src/styles.css" />
-  </head>
-  <body>
-    <main class="app-shell">
-      <section class="board-panel" aria-labelledby="board-title">
-        <div class="panel-heading">
-          <p class="eyebrow">Lichess Chessground</p>
-          <h1 id="board-title">Racing Kings</h1>
-          <p class="lede">
-            Race your king to the eighth rank. The board supports legal-square hints,
-            last-move and piece highlights, drag or click moves, premoves, and arrows.
-          </p>
-        </div>
-        <div class="board-card">
-          <div id="board" class="blue merida" aria-label="Interactive Racing Kings chess board"></div>
-        </div>
-      </section>
-
-      <aside class="info-panel" aria-live="polite">
-        <div class="status-card">
-          <span class="status-label">Game status</span>
-          <strong id="status">White to move</strong>
-        </div>
-        <div class="actions">
-          <button id="reset" type="button">Reset Racing Kings</button>
-          <button id="flip" type="button">Flip board</button>
-        </div>
-        <section>
-          <h2>Enabled board features</h2>
-          <ul class="feature-list">
-            <li>Racing Kings starting position</li>
-            <li>Legal destination dots and capture rings</li>
-            <li>Selected-piece, last-move, and check-style highlights</li>
-            <li>Lichess-style premove selection while Black is thinking</li>
-            <li>Right-click arrows and circles for planning</li>
-          </ul>
-        </section>
-        <section>
-          <h2>How to play</h2>
-          <p>
-            You play White. Move a piece by clicking or dragging it. Black replies
-            automatically; while Black is moving, queue your next legal premove.
-          </p>
-        </section>
-      </aside>
-    </main>
-
-    <script type="module" src="src/app.js"></script>
     <title>Chess Trainer Home</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -62,6 +13,13 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <header class="top-nav" aria-label="Primary navigation">
+      <a class="top-nav__brand" href="index.html">Chess Trainer</a>
+      <nav class="top-nav__links" aria-label="Tools menu">
+        <a href="study-converter.html">Study JSON Converter</a>
+      </nav>
+    </header>
+
     <main class="home-shell" aria-labelledby="home-title">
       <section class="hero-card">
         <div class="ambient ambient-one"></div>
@@ -134,6 +92,13 @@
               <small>Memorize motifs, endgames, and repertoire notes.</small>
             </span>
           </button>
+          <a class="mode-card converter" href="study-converter.html">
+            <span class="mode-icon" aria-hidden="true">{ }</span>
+            <span>
+              <strong>Study JSON Converter</strong>
+              <small>Turn a Lichess study link or PGN into copyable repertoire JSON.</small>
+            </span>
+          </a>
         </nav>
       </section>
     </main>
