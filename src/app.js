@@ -1,6 +1,8 @@
 import { Chessground } from 'https://cdn.jsdelivr.net/npm/@lichess-org/chessground@10.1.1/+esm';
 
 const RACING_KINGS_FEN = '8/8/8/8/8/8/krbnNBRK/qrbnNBRQ w - - 0 1';
+const REPERTOIRE_MANIFEST_URL = 'data/repertoires.json';
+const FALLBACK_REPERTOIRE_FILES = ['data/test1.json'];
 const FILES = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
 const RANKS = ['1', '2', '3', '4', '5', '6', '7', '8'];
 const PIECE_NAMES = {
@@ -48,6 +50,12 @@ let pieces = fenToPieces(RACING_KINGS_FEN);
 let turnColor = 'white';
 let lastMove = [];
 let isBlackThinking = false;
+let selectedPlayerColor = 'white';
+let playerColor = 'white';
+let currentMode = 'board';
+let repertoireRoots = [];
+let currentRepertoireNodes = [];
+let repertoireReady = false;
 
 const BOARD_MODES = {
   repertoire: {
@@ -86,10 +94,13 @@ const boardElement = document.querySelector('#board');
 const statusElement = document.querySelector('#status');
 const resetButton = document.querySelector('#reset');
 const flipButton = document.querySelector('#flip');
+const colorSelect = document.querySelector('#training-color');
+const colorControl = document.querySelector('#color-control');
+const repertoireDetailsElement = document.querySelector('#repertoire-details');
 
 initializeModeContent();
 
-if (!boardElement || !statusElement || !resetButton || !flipButton) {
+if (!boardElement || !statusElement || !resetButton || !flipButton || !colorSelect || !colorControl || !repertoireDetailsElement) {
   throw new Error('Training board markup is missing required elements.');
 }
 
@@ -133,10 +144,16 @@ const board = Chessground(boardElement, {
 
 resetButton.addEventListener('click', resetGame);
 flipButton.addEventListener('click', () => board.toggleOrientation());
-updateBoard('White to move');
+colorSelect.addEventListener('change', () => {
+  selectedPlayerColor = colorSelect.value;
+  resetGame();
+});
+
+initializeTraining();
 
 function initializeModeContent() {
   const mode = new URLSearchParams(window.location.search).get('mode');
+  currentMode = mode || 'board';
   const content = BOARD_MODES[mode] || {
     label: 'Training board',
     title: 'Chessboard workspace',
@@ -147,9 +164,15 @@ function initializeModeContent() {
   document.querySelector('#mode-label').textContent = content.label;
   document.querySelector('#mode-title').textContent = content.title;
   document.querySelector('#mode-description').textContent = content.description;
+  colorControl.hidden = mode !== 'repertoire';
 }
 
 function onUserMove(orig, dest) {
+  if (isRepertoireMode()) {
+    onRepertoireUserMove(orig, dest);
+    return;
+  }
+
   if (turnColor !== 'white' || isBlackThinking) return;
   commitMove(orig, dest);
   const result = resultMessage();
@@ -206,7 +229,20 @@ function resetGame() {
   turnColor = 'white';
   lastMove = [];
   isBlackThinking = false;
-  board.set({ fen: RACING_KINGS_FEN, orientation: 'white' });
+  currentRepertoireNodes = repertoireRoots.map(root => root.tree);
+
+  const orientation = isRepertoireMode() ? resolvePlayerColor() : 'white';
+  board.set({ fen: RACING_KINGS_FEN, orientation });
+
+  if (isRepertoireMode()) {
+    if (!repertoireReady) {
+      updateBoard('Loading repertoire JSON files…');
+      return;
+    }
+    startRepertoireTurn('Practice reset.');
+    return;
+  }
+
   updateBoard('White to move');
 }
 
@@ -218,8 +254,14 @@ function commitMove(orig, dest) {
 }
 
 function updateBoard(message) {
-  const movableColor = turnColor === 'white' ? 'white' : undefined;
-  const premoveDests = isBlackThinking ? legalDestinations('white') : undefined;
+  const movableColor = isRepertoireMode()
+    ? turnColor === playerColor && !isBlackThinking && repertoireReady
+      ? playerColor
+      : undefined
+    : turnColor === 'white'
+      ? 'white'
+      : undefined;
+  const premoveDests = !isRepertoireMode() && isBlackThinking ? legalDestinations('white') : undefined;
 
   statusElement.textContent = message;
   board.set({
@@ -229,7 +271,7 @@ function updateBoard(message) {
     check: checkedKingSquare(),
     movable: {
       color: movableColor,
-      dests: turnColor === 'white' ? legalDestinations('white') : new Map(),
+      dests: movableColor ? legalDestinations(movableColor) : new Map(),
       showDests: true,
     },
     premovable: {
@@ -249,6 +291,261 @@ function resultMessage() {
   return '';
 }
 
+
+async function initializeTraining() {
+  if (!isRepertoireMode()) {
+    repertoireDetailsElement.textContent = 'Free board mode: use the legal move hints to explore the current position.';
+    resetGame();
+    return;
+  }
+
+  updateBoard('Loading repertoire JSON files…');
+  try {
+    repertoireRoots = await loadRepertoireRoots();
+    repertoireReady = repertoireRoots.length > 0;
+    repertoireDetailsElement.textContent = repertoireReady
+      ? `Loaded ${repertoireRoots.length} repertoire chapter${repertoireRoots.length === 1 ? '' : 's'} from JSON.`
+      : 'No playable repertoire chapters were found in the JSON files.';
+  } catch (error) {
+    repertoireReady = false;
+    repertoireDetailsElement.textContent = `Could not load repertoire JSON: ${error.message}`;
+  }
+
+  resetGame();
+}
+
+async function loadRepertoireRoots() {
+  const files = await loadRepertoireFileList();
+  const repertoires = await Promise.all(
+    files.map(async file => {
+      const response = await fetch(file, { cache: 'no-cache' });
+      if (!response.ok) throw new Error(`${file} returned ${response.status}`);
+      return { file, data: await response.json() };
+    }),
+  );
+
+  return repertoires.flatMap(({ file, data }) =>
+    (data.chapters || [])
+      .filter(chapter => chapter.moveTree?.nodes?.length)
+      .filter(chapter => boardPart(chapter.initialFen || chapter.moveTree.startingFen) === boardPart(RACING_KINGS_FEN))
+      .map(chapter => ({
+        file,
+        repertoireName: data.name || file,
+        chapterName: chapter.name || chapter.id || 'Untitled chapter',
+        tree: chapter.moveTree,
+      })),
+  );
+}
+
+async function loadRepertoireFileList() {
+  const githubFiles = await loadGitHubDataFiles();
+  if (githubFiles.length) return githubFiles;
+
+  try {
+    const response = await fetch(REPERTOIRE_MANIFEST_URL, { cache: 'no-cache' });
+    if (!response.ok) throw new Error(`manifest returned ${response.status}`);
+    const manifest = await response.json();
+    if (Array.isArray(manifest.files) && manifest.files.length) return manifest.files;
+  } catch (error) {
+    console.warn('Falling back to bundled repertoire files:', error);
+  }
+  return FALLBACK_REPERTOIRE_FILES;
+}
+
+async function loadGitHubDataFiles() {
+  const repo = githubPagesRepository();
+  if (!repo) return [];
+
+  try {
+    const response = await fetch(`https://api.github.com/repos/${repo.owner}/${repo.name}/contents/data`, {
+      headers: { Accept: 'application/vnd.github+json' },
+    });
+    if (!response.ok) throw new Error(`GitHub returned ${response.status}`);
+    const entries = await response.json();
+    if (!Array.isArray(entries)) return [];
+    return entries
+      .filter(entry => entry.type === 'file' && entry.name.endsWith('.json') && entry.name !== 'repertoires.json')
+      .map(entry => `data/${entry.name}`);
+  } catch (error) {
+    console.warn('Could not discover GitHub data files:', error);
+    return [];
+  }
+}
+
+function githubPagesRepository() {
+  const { hostname, pathname } = window.location;
+  if (!hostname.endsWith('.github.io')) return null;
+
+  const owner = hostname.replace(/\.github\.io$/, '');
+  const firstPathSegment = pathname.split('/').filter(Boolean)[0];
+  return {
+    owner,
+    name: firstPathSegment || `${owner}.github.io`,
+  };
+}
+
+function isRepertoireMode() {
+  return currentMode === 'repertoire';
+}
+
+function resolvePlayerColor() {
+  selectedPlayerColor = colorSelect.value;
+  playerColor = selectedPlayerColor === 'random' ? randomChoice(['white', 'black']) : selectedPlayerColor;
+  return playerColor;
+}
+
+function startRepertoireTurn(prefix = '') {
+  if (!repertoireReady) {
+    updateBoard('No repertoire JSON is available yet.');
+    return;
+  }
+
+  const availableMoves = repertoireMovesForTurn();
+  if (!availableMoves.length) {
+    updateBoard(`${prefix ? `${prefix} ` : ''}Practice complete — there are no more opening moves in the JSON.`.trim());
+    return;
+  }
+
+  if (turnColor === playerColor) {
+    const colorNote = selectedPlayerColor === 'random' ? ` Random selected ${playerColor}.` : '';
+    updateBoard(`${prefix ? `${prefix} ` : ''}${capitalize(playerColor)} to move — play a repertoire move.${colorNote}`);
+    return;
+  }
+
+  isBlackThinking = true;
+  updateBoard(`${prefix ? `${prefix} ` : ''}${capitalize(turnColor)} is choosing a JSON line…`);
+  window.setTimeout(playRepertoireComputerMove, 500);
+}
+
+function onRepertoireUserMove(orig, dest) {
+  if (!repertoireReady || turnColor !== playerColor || isBlackThinking) return;
+
+  const match = findMatchingRepertoireMove(orig, dest);
+  if (!match) {
+    lastMove = [];
+    updateBoard('That move is not an opening move in the JSON. Try one of the highlighted repertoire moves.');
+    return;
+  }
+
+  playRepertoireMove(match, `${capitalize(playerColor)} played ${match.node.san}.`);
+}
+
+function playRepertoireComputerMove() {
+  const options = repertoireMovesForTurn();
+  isBlackThinking = false;
+  if (!options.length) {
+    updateBoard('Practice complete — there are no more opening moves in the JSON.');
+    return;
+  }
+
+  const move = randomChoice(options);
+  playRepertoireMove(move, `${capitalize(turnColor)} selected ${move.node.san} from the JSON.`);
+}
+
+function playRepertoireMove(match, message) {
+  commitMove(match.move.orig, match.move.dest);
+  currentRepertoireNodes = match.nextNodes;
+  turnColor = opposite(turnColor);
+  startRepertoireTurn(message);
+}
+
+function repertoireMovesForTurn() {
+  const children = currentRepertoireNodes.flatMap(node => node.nodes || node.children || []);
+  const moves = [];
+
+  for (const child of children) {
+    const move = moveForSan(child.san, turnColor);
+    if (!move) continue;
+    moves.push({
+      node: child,
+      move,
+      nextNodes: children.filter(candidate => candidate.san === child.san),
+    });
+  }
+
+  return dedupeRepertoireMoves(moves);
+}
+
+function findMatchingRepertoireMove(orig, dest) {
+  return repertoireMovesForTurn().find(option => option.move.orig === orig && option.move.dest === dest);
+}
+
+function repertoireDestinations(color) {
+  const dests = new Map();
+  if (color !== turnColor) return dests;
+
+  for (const option of repertoireMovesForTurn()) {
+    if (!dests.has(option.move.orig)) dests.set(option.move.orig, []);
+    dests.get(option.move.orig).push(option.move.dest);
+  }
+  return dests;
+}
+
+function moveForSan(san, color) {
+  const normalized = normalizeSan(san);
+  return allLegalMoves(color).find(move => moveToSan(move, color) === normalized);
+}
+
+function moveToSan(move, color) {
+  const piece = pieces.get(move.orig);
+  if (!piece) return '';
+
+  const capture = pieces.has(move.dest);
+  const suffixless = `${pieceLetter(piece)}${disambiguation(move, piece, color)}${capture ? 'x' : ''}${move.dest}`;
+  return suffixless;
+}
+
+function disambiguation(move, piece, color) {
+  if (piece.role === 'pawn' || piece.role === 'king') return '';
+
+  const samePieceMoves = allLegalMoves(color).filter(candidate => {
+    if (candidate.orig === move.orig || candidate.dest !== move.dest) return false;
+    const candidatePiece = pieces.get(candidate.orig);
+    return candidatePiece?.role === piece.role;
+  });
+  if (!samePieceMoves.length) return '';
+
+  const [moveFile, moveRank] = squareToCoords(move.orig);
+  const sameFile = samePieceMoves.some(candidate => squareToCoords(candidate.orig)[0] === moveFile);
+  const sameRank = samePieceMoves.some(candidate => squareToCoords(candidate.orig)[1] === moveRank);
+
+  if (!sameFile) return move.orig[0];
+  if (!sameRank) return move.orig[1];
+  return move.orig;
+}
+
+function pieceLetter(piece) {
+  if (piece.role === 'pawn') return '';
+  return Object.entries(PIECE_NAMES).find(([, role]) => role === piece.role)[0].toUpperCase();
+}
+
+function normalizeSan(san) {
+  return san.replace(/[+#?!]+/g, '').replace(/=([QRBN])/g, '$1');
+}
+
+function dedupeRepertoireMoves(moves) {
+  const bySanAndMove = new Map();
+  for (const option of moves) {
+    const key = `${option.node.san}:${option.move.orig}${option.move.dest}`;
+    const existing = bySanAndMove.get(key);
+    if (existing) existing.nextNodes.push(...option.nextNodes);
+    else bySanAndMove.set(key, { ...option, nextNodes: [...option.nextNodes] });
+  }
+  return [...bySanAndMove.values()];
+}
+
+function randomChoice(items) {
+  return items[Math.floor(Math.random() * items.length)];
+}
+
+function boardPart(fen) {
+  return (fen || '').split(' ')[0];
+}
+
+function capitalize(value) {
+  return value.charAt(0).toUpperCase() + value.slice(1);
+}
+
 function checkedKingSquare() {
   const whiteKing = findKing('white');
   const blackKing = findKing('black');
@@ -258,6 +555,8 @@ function checkedKingSquare() {
 }
 
 function legalDestinations(color) {
+  if (isRepertoireMode() && repertoireReady) return repertoireDestinations(color);
+
   const dests = new Map();
   for (const move of allLegalMoves(color)) {
     if (!dests.has(move.orig)) dests.set(move.orig, []);
